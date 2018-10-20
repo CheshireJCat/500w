@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>500w</title>
+	<style type="text/css">
+		button{ font-size:20px;width:80px;}
+	</style>
+</head>
+<body>
+	<button onclick="z()">1注</button>
+	<button onclick="z(5)">5注</button>
+	<div id="result"></div>
+	<script type="text/javascript">
+	function c(){
+		var aim = [];
+		function pusha(){
+			var a = getNum(33);
+			aim.indexOf(a) > -1 ? pusha() : aim.push(a);
+		}
+		for (var i = 0; i < 6; i++){ pusha();}
+		var blue = Math.ceil(Math.random() * 16);
+		return aim.sort().join(' ')+' - '+getNum(16);
+	}
+	function getNum(n){
+		var a = Math.ceil(Math.random() * n);
+		(a < 10) && ( a = '0'+a);
+		return a;
+	}
+	function z(n){
+		n = n || 1;
+		var res = '';
+		for (var i = 0; i < n; i++) {
+			res += '<p>'+c()+'</p>';
+		};
+		console.log(res);
+		result.innerHTML = res;
+	}
+	</script>
+</body>
+</html>
